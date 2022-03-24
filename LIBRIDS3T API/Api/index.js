@@ -4,8 +4,18 @@
 //Instancia o pacote express
     const app  = express();
 
+/*  CONFIGURACAO DO EXPRESS PARA MANIPULACAO DO FORMATO JSON   */
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
+
+//Importa a controller de usuario
+
 //Importa os arquivos de model
-    const usuario = require('./model/Usuario');
+    //const usuario = require('./model/Usuario');
+
+const usuarioController = require('./controller/UsuarioController');
+
+app.use('/', usuarioController);
 
 /***   Servidor auto contido do express
     Recebe as requisições e devolve a resposta
